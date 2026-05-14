@@ -32,4 +32,7 @@ public class RoleModel {
 
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
     private Set<RolePermissionModel> rolePermissions = new HashSet<>();
+
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    private Set<UserRoleModel> userRoles;
 }

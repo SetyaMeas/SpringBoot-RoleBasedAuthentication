@@ -37,8 +37,8 @@ public class UserModel {
     @Column(name = "pwd", nullable = false, length = 255)
     private String password;
 
-    @Column(name = "salt", nullable = false)
-    private byte[] salt;
+    // @Column(name = "salt", nullable = false)
+    // private byte[] salt;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;

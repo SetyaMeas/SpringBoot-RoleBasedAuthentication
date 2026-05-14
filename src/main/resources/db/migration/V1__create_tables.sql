@@ -23,7 +23,7 @@ create table tbl_user (
 	name varchar(255) not null unique,
 	email varchar(255) not null unique,
 	pwd varchar(255) not null,
-	salt bytea not null,
+	-- salt bytea not null,
 	created_at timestamptz default NOW()
 );
 
