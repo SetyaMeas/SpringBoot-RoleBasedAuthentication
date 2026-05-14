@@ -24,6 +24,8 @@ public class ResultMapper {
                 return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT).body(mapResult(result));
             case UNAUTHORIZED:
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(mapResult(result));
+            case ACCESS_DENIED:
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(mapResult(result));
             default:
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(mapResult(result));
         }

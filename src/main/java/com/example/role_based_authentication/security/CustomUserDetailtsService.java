@@ -29,13 +29,10 @@ public class CustomUserDetailtsService implements UserDetailsService {
         UserModel user = userRepo.findByEmail(usernameOrEmail)
             .orElseThrow(() -> new UsernameNotFoundException("Email: " + usernameOrEmail + " not found"));
 
-        Set<String> roles = userRepo.getRolesByEmail(usernameOrEmail);
-        Set<GrantedAuthority> authorities = roles.stream()
+        Set<String> permissions = permissionRepo.getByEmail(usernameOrEmail);
+        Set<GrantedAuthority> authorities = permissions.stream()
             .map(i -> new SimpleGrantedAuthority(i))
             .collect(Collectors.toSet());
-
-        Set<String> test = permissionRepo.getByEmail(usernameOrEmail);
-        test.forEach(i -> System.out.println(i));
 
         return new org.springframework.security.core.userdetails.User(
                 usernameOrEmail,

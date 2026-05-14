@@ -13,14 +13,22 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tbl_user_role")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class UserRoleModel {
+
+    public UserRoleModel(UserModel user, RoleModel role) {
+        this.user = user;
+        this.role = role;
+    }
 
     @Id
     @Column(name = "id")
@@ -35,6 +43,12 @@ public class UserRoleModel {
     @JoinColumn(name = "user_id", nullable = false)
     private UserModel user;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(
+        name = "created_at", 
+        nullable = false,
+        columnDefinition = "TIMESTAMPTZ DEFAULT NOW()",
+        insertable = false,
+        updatable = false
+    )
     private LocalDateTime createdAt;
 }

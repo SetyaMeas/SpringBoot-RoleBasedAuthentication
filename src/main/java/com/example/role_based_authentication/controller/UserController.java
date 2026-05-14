@@ -1,21 +1,28 @@
 package com.example.role_based_authentication.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.role_based_authentication.dto.CreateUserReq;
+import com.example.role_based_authentication.service.UserService;
 import com.example.role_based_authentication.shared.Result;
 import com.example.role_based_authentication.shared.ResultMapper;
 
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> create() {
-        return ResponseEntity.ok("hi");
+    @PreAuthorize("hasAuthority('USER:WRITE')")
+    public ResponseEntity<?> create(@RequestBody CreateUserReq req) {
+        
+        return ResultMapper.toResponse(userService.create(req));
     } 
 }

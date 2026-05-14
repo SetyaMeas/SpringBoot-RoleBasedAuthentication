@@ -1,15 +1,21 @@
 @baseURL=http://localhost:8080/api
 
-@token=eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3Nzg3NjA2MzEsImV4cCI6MTc3OTM2NTQzMX0.XhiCS_L-qO5NVe9kV-F7d0ZTvW2sZ_A9kLN0ycPkVzIWNH6M1rWafHPKknK6A631
-
+@token=eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc3ODc4MjI4OCwiZXhwIjoxNzc5Mzg3MDg4fQ.JR8-B2sDlluJYMcVn9LC4_jOJ4nnb1QMq-ASEFp1KntalnYpJHCNppOx4sxuOAnT
 POST {{baseURL}}/auth/login
 Content-Type: application/json
 
 {
-    "email": "admin@admin.com",
-    "password": "adminadmin"
+    "email": "user@gmail.com",
+    "password": "strongpwd"
 }
 
 ### Create User
 POST {{baseURL}}/user/create
 Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "name": "user 1",
+    "email": "user@gmail.com",
+    "password": "strongpwd"
+}

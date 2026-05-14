@@ -20,7 +20,4 @@ insert into tbl_role_permission (role_id, permission_id) values
 (1, 6),
 (1, 7),
 (1, 8),
-(2, 5),
-(2, 6),
-(2, 7),
-(2, 8);
+(2, 5);
