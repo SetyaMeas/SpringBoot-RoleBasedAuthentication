@@ -1,6 +1,6 @@
 package com.example.role_based_authentication.model;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +12,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -50,5 +49,5 @@ public class UserRoleModel {
         insertable = false,
         updatable = false
     )
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 }

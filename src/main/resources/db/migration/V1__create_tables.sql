@@ -35,11 +35,3 @@ create table tbl_user_role (
 	foreign key (role_id) references tbl_role (id),
 	created_at timestamptz default NOW()
 );
-
-create table tbl_task (
-	id serial primary key,
-	name varchar (255) not null,
-	user_id int not null,
-	created_at timestamptz default NOW(),
-	foreign key (user_id) references tbl_user (id)
-);

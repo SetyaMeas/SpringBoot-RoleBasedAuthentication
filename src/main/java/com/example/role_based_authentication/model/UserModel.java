@@ -1,6 +1,6 @@
 package com.example.role_based_authentication.model;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -15,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,9 +41,6 @@ public class UserModel {
     @Column(name = "pwd", nullable = false, length = 255)
     private String password;
 
-    // @Column(name = "salt", nullable = false)
-    // private byte[] salt;
-
     @Column(
         name = "created_at", 
         nullable = false,
@@ -52,13 +48,10 @@ public class UserModel {
         insertable = false,
         updatable = false
     )
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UserRoleModel> userRoles = new HashSet<>();
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<TaskModel> tasks;
 
     public void addRole(RoleModel roleModel) {
         UserRoleModel userRoleModel = new UserRoleModel(this, roleModel);

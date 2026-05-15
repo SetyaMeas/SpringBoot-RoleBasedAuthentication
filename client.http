@@ -1,12 +1,13 @@
 @baseURL=http://localhost:8080/api
 
-@token=eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc3ODc4MjI4OCwiZXhwIjoxNzc5Mzg3MDg4fQ.JR8-B2sDlluJYMcVn9LC4_jOJ4nnb1QMq-ASEFp1KntalnYpJHCNppOx4sxuOAnT
+@token=eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3Nzg4Njg0NDIsImV4cCI6MTc3ODg2ODYyMn0.BwWgxwXKan5Z73bvOe9OAzMHsUVyChFEr7tH6JudxjKSMgoGtcadQGfRUlTQBYVL
+
 POST {{baseURL}}/auth/login
 Content-Type: application/json
 
 {
-    "email": "user@gmail.com",
-    "password": "strongpwd"
+    "email": "admin@admin.com",
+    "password": "adminadmin"
 }
 
 ### Create User
@@ -19,3 +20,11 @@ Content-Type: application/json
     "email": "user@gmail.com",
     "password": "strongpwd"
 }
+
+### View all users
+GET {{baseURL}}/user/view-all
+Authorization: Bearer {{token}}
+
+### Grand Admin Role
+PUT {{baseURL}}/user/grand-admin?userId=2
+Authorization: Bearer {{token}}

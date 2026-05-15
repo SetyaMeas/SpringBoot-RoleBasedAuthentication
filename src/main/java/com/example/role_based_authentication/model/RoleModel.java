@@ -1,7 +1,6 @@
 package com.example.role_based_authentication.model;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -13,7 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,5 +35,5 @@ public class RoleModel {
     private Set<RolePermissionModel> rolePermissions = new HashSet<>();
 
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-    private Set<UserRoleModel> userRoles;
+    private Set<UserRoleModel> userRoles = new HashSet<>();
 }

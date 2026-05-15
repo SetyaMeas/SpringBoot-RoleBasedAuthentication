@@ -18,7 +18,6 @@ public class GlobalExceptionHandler {
     // Failed login attempted
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<?> handleException(BadCredentialsException ex, HttpServletRequest request) {
-        ex.printStackTrace();
         return ResultMapper.toResponse(Result.Failure(
             ErrorCode.UNAUTHORIZED, 
             "Invalid username or password"
@@ -27,7 +26,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(AuthorizationDeniedException.class)
     public ResponseEntity<?> handleException(AuthorizationDeniedException ex, HttpServletRequest request) {
-        ex.printStackTrace();
         return ResultMapper.toResponse(Result.Failure(
             ErrorCode.ACCESS_DENIED, 
             "You don't have permission to execute this action"
