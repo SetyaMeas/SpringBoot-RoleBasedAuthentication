@@ -21,7 +21,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/create")
+    @PostMapping("")
     @PreAuthorize("hasAuthority('USER:WRITE')")
     public ResponseEntity<?> create(@RequestBody CreateUserReq req) {
         return ResultMapper.toResponse(userService.create(req));

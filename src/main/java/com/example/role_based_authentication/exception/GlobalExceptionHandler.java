@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleException(BadCredentialsException ex, HttpServletRequest request) {
         return ResultMapper.toResponse(Result.Failure(
             ErrorCode.UNAUTHORIZED, 
-            "Invalid username or password"
+            "Invalid email or password"
         ));
     }
 
