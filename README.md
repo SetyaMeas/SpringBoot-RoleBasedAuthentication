@@ -2,6 +2,17 @@
 
 A Role-based Authentication/Authorization service use to secure API access.
 
+We have 2 roles with the following permissions:
+
+- `ROLE_ADMIN`
+  - CREATE USER
+  - EDIT USER
+  - DELETE USER
+- `ROLE_USER`
+  - VIEW USER
+
+To grant a user full access to all available permissions, assign both `ROLE_ADMIN` and `ROLE_USER` roles to the user.
+
 Tech Stack
 ---
 - Java
